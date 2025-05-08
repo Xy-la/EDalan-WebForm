@@ -12,7 +12,7 @@ namespace EDalan_WebForm
         // For more information on Bundling, visit http://go.microsoft.com/fwlink/?LinkID=303951
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/bundles/WebFormsJs").Include(
+            bundles.Add(new Bundle("~/bundles/WebFormsJs").Include(
                             "~/Scripts/WebForms/WebForms.js",
                             "~/Scripts/WebForms/WebUIValidation.js",
                             "~/Scripts/WebForms/MenuStandards.js",
@@ -23,15 +23,20 @@ namespace EDalan_WebForm
                             "~/Scripts/WebForms/WebParts.js"));
 
             // Order is very important for these files to work, they have explicit dependencies
-            bundles.Add(new ScriptBundle("~/bundles/MsAjaxJs").Include(
+            bundles.Add(new Bundle("~/bundles/MsAjaxJs").Include(
                     "~/Scripts/WebForms/MsAjax/MicrosoftAjax.js",
                     "~/Scripts/WebForms/MsAjax/MicrosoftAjaxApplicationServices.js",
                     "~/Scripts/WebForms/MsAjax/MicrosoftAjaxTimer.js",
                     "~/Scripts/WebForms/MsAjax/MicrosoftAjaxWebForms.js"));
 
+            bundles.Add(new Bundle("~/Content/css").Include(
+                "~/Content/bootstrap.css",
+                "~/Content/Site.css"       
+            ));
+
             // Use the Development version of Modernizr to develop with and learn from. Then, when you’re
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need
-            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
+            bundles.Add(new Bundle("~/bundles/modernizr").Include(
                             "~/Scripts/modernizr-*"));
 
             ScriptManager.ScriptResourceMapping.AddDefinition(
