@@ -5,6 +5,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using EDalan_WebForm.Models;
 using System.Threading.Tasks;
+using EDalan.Services;
 
 namespace EDalan_WebForm.Auth
 {
@@ -24,11 +25,10 @@ namespace EDalan_WebForm.Auth
             string email = txtEmail.Text.Trim();
             string password = txtPassword.Text.Trim();
 
-            // Validate input
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
-                lblError.Text = "Please enter both email and password.";
-                lblError.Visible = true;
+                litError.Text = "<div class='alert alert-danger'>Please enter both email and password.</div>";
+                litError.Visible = true;
                 return;
             }
 
@@ -36,15 +36,15 @@ namespace EDalan_WebForm.Auth
 
             if (user == null)
             {
-                lblError.Text = "Invalid email or password.";
-                lblError.Visible = true;
+                litError.Text = "<div class='alert alert-danger'>Invalid email or password.</div>";
+                litError.Visible = true;
                 return;
             }
 
             if (!user.IsActive)
             {
-                lblError.Text = "Your account is not active. Please contact support.";
-                lblError.Visible = true;
+                litError.Text = "<div class='alert alert-danger'>Your account is not active. Please contact support.</div>";
+                litError.Visible = true;
                 return;
             }
 
@@ -56,8 +56,8 @@ namespace EDalan_WebForm.Auth
             }
             else
             {
-                lblError.Text = "Invalid email or password.";
-                lblError.Visible = true;
+                litError.Text = "<div class='alert alert-danger'>Invalid email or password.</div>";
+                litError.Visible = true;
             }
         }
     }
