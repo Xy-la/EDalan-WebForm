@@ -8,7 +8,7 @@ namespace EDalan_WebForm.Models
 {
     public class UserDashboardModel
     {
-        public User User { get; set; }
+        public ApplicationUser User { get; set; }
 
         [Required]
         public string ProfileImage { get; set; }

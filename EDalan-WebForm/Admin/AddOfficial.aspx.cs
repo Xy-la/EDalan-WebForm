@@ -1,0 +1,51 @@
+﻿using System;
+using System.Linq;
+using System.Web.UI;
+using EDalan_WebForm.Models;
+using EDalan.Services;
+using System.Web.UI.WebControls;
+using FileUploadService = EDalan.Services.FileUpload;
+
+namespace EDalan_WebForm.Admin
+{
+    public partial class AddOfficial : System.Web.UI.Page
+    {
+        private FileUploadService fileUploadService => new FileUploadService();
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnAddOfficial_Click(object sender, EventArgs e)
+        {
+            string imageUrl = null;
+
+            if (fuProfileImage.HasFile)
+            {
+                imageUrl = fileUploadService.UploadFile(fuProfileImage.PostedFile, "officials");
+            }
+
+            using (var context = ApplicationDbContext.Create())
+            {
+                var newOfficial = new OfficialModel
+                {
+                    Name = txtName.Text,
+                    Position = txtPosition.Text,
+                    ProfileImage = imageUrl,
+                    IsActive = chkIsActive.Checked
+                };
+
+                context.Officials.Add(newOfficial);
+                context.SaveChanges();
+                Response.Redirect("~/Admin/Officials.aspx", false);
+                Context.ApplicationInstance.CompleteRequest();
+            }
+
+            txtName.Text = "";
+            txtPosition.Text = "";
+            chkIsActive.Checked = false;
+        }
+
+    }
+}

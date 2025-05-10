@@ -18,6 +18,12 @@ namespace EDalan_WebForm.Auth
         {
             _userManager = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
             _signInManager = HttpContext.Current.GetOwinContext().Get<ApplicationSignInManager>();
+
+            if (!IsPostBack)
+            {
+                pnlError.Visible = false;
+                pnlSuccess.Visible = false;
+            }
         }
 
         protected async void btnLogin_Click(object sender, EventArgs e)
@@ -27,24 +33,21 @@ namespace EDalan_WebForm.Auth
 
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
-                litError.Text = "<div class='alert alert-danger'>Please enter both email and password.</div>";
-                litError.Visible = true;
+                ShowError("Please enter both email and password.");
                 return;
             }
 
             var user = await _userManager.FindByEmailAsync(email);
 
-            if (user == null)
+            if (user == null || !await _userManager.CheckPasswordAsync(user, password))
             {
-                litError.Text = "<div class='alert alert-danger'>Invalid email or password.</div>";
-                litError.Visible = true;
+                ShowError("Invalid email or password.");
                 return;
             }
 
             if (!user.IsActive)
             {
-                litError.Text = "<div class='alert alert-danger'>Your account is not active. Please contact support.</div>";
-                litError.Visible = true;
+                ShowError("Your account is not active. Please contact support.");
                 return;
             }
 
@@ -52,13 +55,20 @@ namespace EDalan_WebForm.Auth
 
             if (result == SignInStatus.Success)
             {
-                Response.Redirect("~/User/Index.aspx");
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "Swal.fire('Success!', 'Login successfully.', 'success');", true);
+                Response.Redirect("~/User/Dashboard.aspx", false);
+                Context.ApplicationInstance.CompleteRequest();
             }
             else
             {
-                litError.Text = "<div class='alert alert-danger'>Invalid email or password.</div>";
-                litError.Visible = true;
+                ShowError("Invalid email or password.");
             }
+        }
+
+        private void ShowError(string message)
+        {
+            litError.Text = message;
+            pnlError.Visible = true;
         }
     }
 }

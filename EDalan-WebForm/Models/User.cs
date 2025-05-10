@@ -7,7 +7,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace EDalan_WebForm.Models
 {
-    public class User : IdentityUser
+    public class ApplicationUser : IdentityUser
     {
         [Required(ErrorMessage = "Full Name is required.")]
         [Display(Name = "Full Name")]
@@ -27,7 +27,7 @@ namespace EDalan_WebForm.Models
 
         public virtual ICollection<Request> Requests { get; set; }
 
-        public User()
+        public ApplicationUser()
         {
             Requests = new List<Request>();
         }

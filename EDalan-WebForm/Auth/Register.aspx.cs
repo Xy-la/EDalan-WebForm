@@ -7,6 +7,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Owin;
 using System.Web;
+using System.Web.UI;
+
 
 namespace EDalan_WebForm.Auth
 {
@@ -51,7 +53,7 @@ namespace EDalan_WebForm.Auth
                 imageUrl = fileUploadService.UploadFile(fuProfileImage.PostedFile, "users");
             }
 
-            var user = new User
+            var user = new ApplicationUser
             {
                 FullName = fullName,
                 Email = email,
@@ -68,7 +70,7 @@ namespace EDalan_WebForm.Auth
 
             if (result.Succeeded)
             {
-                Session["SuccessMessage"] = "Registration successful!";
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "Swal.fire('Success!', 'Login successfully.', 'success');", true);
                 Response.Redirect("~/Auth/Login.aspx", false);
                 Context.ApplicationInstance.CompleteRequest(); 
                 return;

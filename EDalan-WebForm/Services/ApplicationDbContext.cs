@@ -4,7 +4,7 @@ using EDalan_WebForm.Models;
 
 namespace EDalan.Services
 {
-    public class ApplicationDbContext : IdentityDbContext<User>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
             : base("DefaultConnection")

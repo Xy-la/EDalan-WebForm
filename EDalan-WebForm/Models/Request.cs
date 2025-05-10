@@ -24,7 +24,7 @@ namespace EDalan_WebForm.Models
         // Foreign Key for User
         public string UserId { get; set; }
 
-        public virtual User User { get; set; }
+        public virtual ApplicationUser User { get; set; }
 
         public string RequestId { get; set; }
 
