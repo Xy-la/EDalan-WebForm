@@ -2,7 +2,12 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container-fluid">
-        <h2 class="mb-4 text-primary">Edit User</h2>
+                <div class="d-flex justify-content-between align-items-center mb-4">
+            <h3 class="text-primary">Edit User</h3>
+            <a href="/Admin/Users.aspx" class="btn btn-outline-secondary btn-sm">
+                <i class="bi bi-arrow-left"></i> Back to List
+            </a>
+        </div>
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group text-center">

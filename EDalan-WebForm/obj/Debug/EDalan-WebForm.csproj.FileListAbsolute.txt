@@ -1,5 +1,3 @@
-C:\Users\Zyla Rea D. Lumaad\Documents\Visual Studio 2015\Projects\EDalan-WebForm\EDalan-WebForm\obj\Debug\EDalan_WebForm.Migrations.InitialCreate.resources
-C:\Users\Zyla Rea D. Lumaad\Documents\Visual Studio 2015\Projects\EDalan-WebForm\EDalan-WebForm\obj\Debug\EDalan-WebForm.csproj.GenerateResource.Cache
 C:\Users\Zyla Rea D. Lumaad\Documents\Visual Studio 2015\Projects\EDalan-WebForm\EDalan-WebForm\bin\ApplicationInsights.config
 C:\Users\Zyla Rea D. Lumaad\Documents\Visual Studio 2015\Projects\EDalan-WebForm\EDalan-WebForm\bin\roslyn\csc.exe
 C:\Users\Zyla Rea D. Lumaad\Documents\Visual Studio 2015\Projects\EDalan-WebForm\EDalan-WebForm\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -66,5 +64,8 @@ C:\Users\Zyla Rea D. Lumaad\Documents\Visual Studio 2015\Projects\EDalan-WebForm
 C:\Users\Zyla Rea D. Lumaad\Documents\Visual Studio 2015\Projects\EDalan-WebForm\EDalan-WebForm\bin\Antlr3.Runtime.pdb
 C:\Users\Zyla Rea D. Lumaad\Documents\Visual Studio 2015\Projects\EDalan-WebForm\EDalan-WebForm\bin\Newtonsoft.Json.xml
 C:\Users\Zyla Rea D. Lumaad\Documents\Visual Studio 2015\Projects\EDalan-WebForm\EDalan-WebForm\bin\Microsoft.AspNet.FriendlyUrls.xml
+C:\Users\Zyla Rea D. Lumaad\Documents\Visual Studio 2015\Projects\EDalan-WebForm\EDalan-WebForm\obj\Debug\EDalan_WebForm.Migrations.InitialCreate.resources
+C:\Users\Zyla Rea D. Lumaad\Documents\Visual Studio 2015\Projects\EDalan-WebForm\EDalan-WebForm\obj\Debug\EDalan-WebForm.csproj.GenerateResource.Cache
 C:\Users\Zyla Rea D. Lumaad\Documents\Visual Studio 2015\Projects\EDalan-WebForm\EDalan-WebForm\obj\Debug\EDalan-WebForm.dll
 C:\Users\Zyla Rea D. Lumaad\Documents\Visual Studio 2015\Projects\EDalan-WebForm\EDalan-WebForm\obj\Debug\EDalan-WebForm.pdb
+C:\Users\Zyla Rea D. Lumaad\Documents\Visual Studio 2015\Projects\EDalan-WebForm\EDalan-WebForm\obj\Debug\EDalan-WebForm.csprojResolveAssemblyReference.cache

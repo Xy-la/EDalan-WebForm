@@ -2,7 +2,12 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
-        <h2>Edit Official</h2>
+                <div class="d-flex justify-content-between align-items-center mb-4">
+            <h3 class="text-primary">Edit Official</h3>
+            <a href="/Admin/Officials.aspx" class="btn btn-outline-secondary btn-sm">
+                <i class="bi bi-arrow-left"></i> Back to List
+            </a>
+        </div>
 
         <asp:Label ID="lblMessage" runat="server" CssClass="text-success" />
 

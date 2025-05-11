@@ -3,9 +3,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container-fluid min-vh-100 d-flex justify-content-center align-items-center">
         <div class="col-md-6 p-4">
-            <h3 class="fw-bold text-center text-primary mb-4">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                 <h3 class="fw-bold text-center text-primary mb-4">
                 <i class="bi bi-gear-fill"></i> Add New Service
             </h3>
+            <a href="/Admin/Services.aspx" class="btn btn-outline-secondary btn-sm">
+                <i class="bi bi-arrow-left"></i> Back to List
+            </a>
+        </div>
 
             <div class="mb-3">
                 <label for="txtTitle" class="form-label">Service Title</label>

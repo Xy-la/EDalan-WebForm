@@ -17,7 +17,7 @@ namespace EDalan_WebForm.Models
         public DateTime RequestDate { get; set; }
 
         [Required]
-        public string Status { get; set; } // Pending, Approved, Reject
+        public string Status { get; set; } // Pending, Approved, Rejected
 
         public DateTime DateCreated { get; set; }
 

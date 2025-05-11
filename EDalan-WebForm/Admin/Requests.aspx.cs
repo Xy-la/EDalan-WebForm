@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web.UI.WebControls;
 using EDalan_WebForm.Models;
 using EDalan.Services;
+using System.Web.UI;
 
 namespace EDalan_WebForm.Admin
 {
@@ -31,40 +32,61 @@ namespace EDalan_WebForm.Admin
 
         protected void gvRequests_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName == "Approve" || e.CommandName == "Reject")
-            {
-                string requestId = e.CommandArgument.ToString();
-                string newStatus = e.CommandName == "Approve" ? "Approved" : "Rejected";
+            string requestId = e.CommandArgument.ToString();
 
+            // Attempt to safely convert requestId to an integer
+            int requestIdInt;
+            if (Int32.TryParse(requestId, out requestIdInt))  // Try to parse requestId to an integer
+            {
                 using (var context = ApplicationDbContext.Create())
                 {
-                    var request = context.Requests.FirstOrDefault(r => r.RequestId == requestId);
+                    var request = context.Requests.FirstOrDefault(r => r.RequestId == requestIdInt.ToString());
                     if (request != null)
                     {
-                        request.Status = newStatus;
-                        context.SaveChanges();
+                        if (e.CommandName == "Approve" || e.CommandName == "Reject")
+                        {
+                            request.Status = e.CommandName == "Approve" ? "Approved" : "Rejected";
+                            context.SaveChanges();
+
+                            ScriptManager.RegisterStartupScript(this, GetType(), "statusSuccess",
+                                $"Swal.fire('Success', 'Request has been {request.Status.ToLower()}!', 'success');", true);
+                        }
+                        else if (e.CommandName == "Delete")
+                        {
+                            context.Requests.Remove(request);
+                            context.SaveChanges();
+
+                            ScriptManager.RegisterStartupScript(this, GetType(), "deleteSuccess",
+                                "Swal.fire('Success', 'Request has been deleted!', 'success');", true);
+                        }
+
+                        LoadRequests();
                     }
                 }
-
-                LoadRequests();
+            }
+            else
+            {
+                // Handle invalid requestId scenario
+                ScriptManager.RegisterStartupScript(this, GetType(), "invalidId",
+                    "Swal.fire('Error', 'Invalid request ID format!', 'error');", true);
             }
         }
 
-        protected void gvRequests_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        protected override void Render(System.Web.UI.HtmlTextWriter writer)
         {
-            string requestId = gvRequests.DataKeys[e.RowIndex].Value.ToString();
-
-            using (var context = ApplicationDbContext.Create())
+            foreach (GridViewRow row in gvRequests.Rows)
             {
-                var request = context.Requests.FirstOrDefault(r => r.RequestId == requestId);
-                if (request != null)
+                if (row.RowType == DataControlRowType.DataRow)
                 {
-                    context.Requests.Remove(request);
-                    context.SaveChanges();
+                    string requestId = gvRequests.DataKeys[row.RowIndex].Value.ToString();
+
+                    ClientScript.RegisterForEventValidation(gvRequests.UniqueID, "Approve$" + requestId);
+                    ClientScript.RegisterForEventValidation(gvRequests.UniqueID, "Reject$" + requestId);
+                    ClientScript.RegisterForEventValidation(gvRequests.UniqueID, "Delete$" + requestId);
                 }
             }
 
-            LoadRequests();
+            base.Render(writer);
         }
     }
 }

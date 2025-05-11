@@ -2,7 +2,12 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container-fluid">
-        <h2>Edit Announcement</h2>
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h3 class="text-primary">Edit Announcement</h3>
+            <a href="/Admin/Announcement.aspx" class="btn btn-outline-secondary btn-sm">
+                <i class="bi bi-arrow-left"></i> Back to List
+            </a>
+        </div>
         <div class="mb-3">
             <asp:TextBox ID="txtEditTitle" runat="server" CssClass="form-control" Placeholder="Title" />
         </div>

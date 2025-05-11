@@ -4,7 +4,12 @@
     <div class="container-fluid min-vh-100 d-flex justify-content-center align-items-center">
         <div class="col-md-6 form">
             <div class="form-container">
-                <h3 class="fw-bold text-center">Add User</h3>
+                       <div class="d-flex justify-content-between align-items-center mb-4">
+            <h3 class="text-primary">Add User</h3>
+            <a href="/Admin/Users.aspx" class="btn btn-outline-secondary btn-sm">
+                <i class="bi bi-arrow-left"></i> Back to List
+            </a>
+        </div>
 
                 <asp:Label ID="lblError" runat="server" CssClass="alert alert-danger d-block" Visible="false"></asp:Label>
                 <asp:Label ID="lblSuccess" runat="server" CssClass="alert alert-success d-block" Visible="false"></asp:Label>
