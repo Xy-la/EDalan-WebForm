@@ -38,9 +38,31 @@
                 </div>
 
                 <div class="form-group">
-                    <asp:Button ID="btnUpdate" runat="server" Text="Update" CssClass="btn btn-primary w-100" OnClick="btnUpdate_Click" />
+                    <asp:Button ID="btnUpdate" runat="server" Text="Update" CssClass="btn btn-primary w-100" OnClientClick="return validateFileUpload();" OnClick="btnUpdate_Click" />
                 </div>
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+    function validateFileUpload() {
+        var fileInput = document.getElementById('<%= fileUploadProfileImage.ClientID %>');
+        var file = fileInput.files[0];
+
+        if (file) {
+            var maxSize = 4 * 1024 * 1024;  
+            if (file.size > maxSize) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Upload Failed',
+                    text: 'File size must be 4MB or less.',
+                    confirmButtonColor: '#3085d6'
+                });
+                return false; 
+            }
+        }
+        return true;
+    }
+</script>
+
 </asp:Content>

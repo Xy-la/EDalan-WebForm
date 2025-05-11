@@ -70,9 +70,7 @@ namespace EDalan_WebForm.Auth
 
             if (result.Succeeded)
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "Swal.fire('Success!', 'Login successfully.', 'success');", true);
-                Response.Redirect("~/Auth/Login.aspx", false);
-                Context.ApplicationInstance.CompleteRequest(); 
+                EDalan_WebForm.Helpers.AlertHelper.ShowSuccessAndRedirect(this, "Registration successfully.", "/Auth/Login.aspx");
                 return;
             }
 

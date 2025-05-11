@@ -6,7 +6,7 @@ using EDalan.Services;
 
 namespace EDalan_WebForm.Admin
 {
-    public partial class EditAnnouncement : System.Web.UI.Page
+    public partial class EditAnnouncement : EDalan_WebForm.Helpers.BaseAdminPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -54,8 +54,7 @@ namespace EDalan_WebForm.Admin
                 }
             }
 
-            Response.Redirect("~/Admin/Announcement.aspx", false);
-            Context.ApplicationInstance.CompleteRequest();
+            EDalan_WebForm.Helpers.AlertHelper.ShowSuccessAndRedirect(this, "Updated successfully.", "/Admin/Announcement.aspx");
         }
     }
 }

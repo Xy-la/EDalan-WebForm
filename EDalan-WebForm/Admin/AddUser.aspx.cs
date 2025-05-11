@@ -9,7 +9,7 @@ using EDalan.Services;
 
 namespace EDalan_WebForm.Admin
 {
-    public partial class AddUser : System.Web.UI.Page
+    public partial class AddUser : EDalan_WebForm.Helpers.BaseAdminPage
     {
         private ApplicationUserManager UserManager => HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
         private FileUpload fileUploadService => new FileUpload();
@@ -67,9 +67,7 @@ namespace EDalan_WebForm.Admin
 
             if (result.Succeeded)
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "Swal.fire('Success!', 'User created successfully.', 'success');", true);
-                Response.Redirect("~/Admin/Users.aspx", false);
-                Context.ApplicationInstance.CompleteRequest();
+                EDalan_WebForm.Helpers.AlertHelper.ShowSuccessAndRedirect(this, "Added successfully.", "/Admin/Users.aspx");
                 return;
             }
 

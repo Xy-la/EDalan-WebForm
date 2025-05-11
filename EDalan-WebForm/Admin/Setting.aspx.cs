@@ -9,7 +9,7 @@ using EDalan.Services;
 
 namespace EDalan_WebForm.Admin
 {
-    public partial class Setting : System.Web.UI.Page
+    public partial class Setting : EDalan_WebForm.Helpers.BaseAdminPage
     {
         private ApplicationUserManager _userManager;
         private ApplicationDbContext _context;

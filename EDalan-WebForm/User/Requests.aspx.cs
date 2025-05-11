@@ -49,11 +49,6 @@ namespace EDalan_WebForm.User
             rptRequests.DataBind();
         }
 
-        protected void btnAddRequest_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("~/User/AddRequest.aspx");
-        }
-
         protected string GetStatusBadge(string status)
         {
             string cssClass = "badge ";

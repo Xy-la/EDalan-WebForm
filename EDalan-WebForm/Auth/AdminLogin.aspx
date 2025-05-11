@@ -5,7 +5,7 @@
         <div class="col-md-6 form">
             <div class="form-container">
                 <h3 class="fw-bold">Admin Login</h3>
-                <p class="text-muted mb-4">Ac   cess your Barangay management system</p>
+                <p class="text-muted mb-4">Access your Barangay management system</p>
                 <asp:Panel ID="pnlError" runat="server" CssClass="alert alert-danger d-flex align-items-center" Visible="false">
                     <asp:Literal ID="litError" runat="server" />
                 </asp:Panel>

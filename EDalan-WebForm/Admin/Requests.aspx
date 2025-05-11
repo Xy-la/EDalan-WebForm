@@ -4,7 +4,7 @@
             <h3 class="mb-4 text-left text-primary">Manage Requests</h3>
     
             <div class="container-fluid">
-                <asp:GridView ID="gvRequests" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered table-hover table-striped" OnRowCommand="gvRequests_RowCommand"  DataKeyNames="RequestId">
+                <asp:GridView ID="gvRequests" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered table-hover table-striped" OnRowCommand="gvRequests_RowCommand"  DataKeyNames="RequestId" EnablePersistedSelection="true">
             <Columns>
                 <asp:BoundField DataField="RequestId" HeaderText="Request Id" SortExpression="RequestId" />
                 <asp:BoundField DataField="Type" HeaderText="Type" SortExpression="Type" />

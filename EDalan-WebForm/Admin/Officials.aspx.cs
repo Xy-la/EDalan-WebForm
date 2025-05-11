@@ -8,7 +8,7 @@ using FileUploadService = EDalan.Services.FileUpload;
 
 namespace EDalan_WebForm.Admin
 {
-    public partial class Officials : System.Web.UI.Page
+    public partial class Officials : EDalan_WebForm.Helpers.BaseAdminPage
     {
         private FileUploadService fileUploadService => new FileUploadService(); 
 
@@ -45,6 +45,7 @@ namespace EDalan_WebForm.Admin
                         context.Officials.Remove(official);
                         context.SaveChanges();
                         LoadOfficials();
+                        Helpers.AlertHelper.ShowSuccess(this.Page, "Official deleted successfully!");
                     }
                 }
             }

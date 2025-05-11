@@ -8,7 +8,7 @@ using EDalan.Services;
 
 namespace EDalan_WebForm.Admin
 {
-    public partial class AddAnnouncement : System.Web.UI.Page
+    public partial class AddAnnouncement : EDalan_WebForm.Helpers.BaseAdminPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -28,8 +28,7 @@ namespace EDalan_WebForm.Admin
 
                 context.Announcements.Add(newAnnouncement);
                 context.SaveChanges();
-                Response.Redirect("~/Admin/Announcement.aspx", false);
-                Context.ApplicationInstance.CompleteRequest();
+                EDalan_WebForm.Helpers.AlertHelper.ShowSuccessAndRedirect(this, "Added successfully.", "/Admin/Announcement.aspx");
             }
 
             txtTitle.Text = "";

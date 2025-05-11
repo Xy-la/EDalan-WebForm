@@ -55,9 +55,7 @@ namespace EDalan_WebForm.Auth
 
             if (result == SignInStatus.Success)
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "Swal.fire('Success!', 'Login successfully.', 'success');", true);
-                Response.Redirect("~/User/Dashboard.aspx", false);
-                Context.ApplicationInstance.CompleteRequest();
+                EDalan_WebForm.Helpers.AlertHelper.ShowSuccessAndRedirect(this, "Login successfully.", "/User/Dashboard.aspx");
             }
             else
             {

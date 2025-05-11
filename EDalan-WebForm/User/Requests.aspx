@@ -2,10 +2,13 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="container py-4">
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <h3>My Requests</h3>
-            <asp:Button ID="btnAddRequest" runat="server" Text="Add Request" OnClick="btnAddRequest_Click" CssClass="btn btn-primary" />
-        </div>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="text-left text-primary">My Requests</h3>
+
+        <a href="/User/AddRequest.aspx" class="btn btn-success btn-sm">
+            <i class="bi bi-plus"></i> Add New
+        </a>
+    </div>
 
         <div class="card shadow-sm border-0">
             <div class="card-body p-0">

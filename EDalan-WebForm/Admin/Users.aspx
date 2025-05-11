@@ -36,7 +36,8 @@
                             CssClass="btn btn-danger btn-sm ms-1"
                             CommandName="DeleteUser"
                             CommandArgument='<%# Eval("Id") %>'
-                            OnClientClick="return confirm('Are you sure you want to delete this official?');"
+                            OnClientClick="return confirm('Are you sure you want to delete this user?');"
+                            Visible='<%# Eval("Role").ToString() != "Admin" %>'
                             CausesValidation="false">
                             <i class="bi bi-trash"></i> Delete
                         </asp:LinkButton>

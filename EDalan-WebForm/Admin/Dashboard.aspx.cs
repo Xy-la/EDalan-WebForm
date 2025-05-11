@@ -6,7 +6,7 @@ using EDalan.Services;
 
 namespace EDalan_WebForm.Admin
 {
-    public partial class Dashboard : System.Web.UI.Page
+    public partial class Dashboard : EDalan_WebForm.Helpers.BaseAdminPage
     {
         public int ApprovedRequests;
         public int PendingRequests;

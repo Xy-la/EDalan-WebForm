@@ -5,7 +5,7 @@ using EDalan.Services;
 
 namespace EDalan_WebForm.Admin
 {
-    public partial class EditService : System.Web.UI.Page
+    public partial class EditService : EDalan_WebForm.Helpers.BaseAdminPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -53,8 +53,7 @@ namespace EDalan_WebForm.Admin
                 }
             }
 
-            Response.Redirect("~/Admin/Services.aspx", false);
-            Context.ApplicationInstance.CompleteRequest();
+            EDalan_WebForm.Helpers.AlertHelper.ShowSuccessAndRedirect(this, "Updated successfully.", "/Admin/Services.aspx");
         }
 
     }

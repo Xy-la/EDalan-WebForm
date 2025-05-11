@@ -8,7 +8,7 @@ using FileUploadService = EDalan.Services.FileUpload;
 
 namespace EDalan_WebForm.Admin
 {
-    public partial class AddOfficial : System.Web.UI.Page
+    public partial class AddOfficial : EDalan_WebForm.Helpers.BaseAdminPage
     {
         private FileUploadService fileUploadService => new FileUploadService();
 
@@ -38,8 +38,7 @@ namespace EDalan_WebForm.Admin
 
                 context.Officials.Add(newOfficial);
                 context.SaveChanges();
-                Response.Redirect("~/Admin/Officials.aspx", false);
-                Context.ApplicationInstance.CompleteRequest();
+                EDalan_WebForm.Helpers.AlertHelper.ShowSuccessAndRedirect(this, "Added successfully.", "/Admin/Officials.aspx");
             }
 
             txtName.Text = "";

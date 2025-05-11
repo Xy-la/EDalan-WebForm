@@ -8,7 +8,7 @@ using System.Web;
 
 namespace EDalan_WebForm.Admin
 {
-    public partial class ChangePassword : Page
+    public partial class ChangePassword : EDalan_WebForm.Helpers.BaseAdminPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

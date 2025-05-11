@@ -7,7 +7,7 @@ using EDalan.Services;
 
 namespace EDalan_WebForm.Admin
 {
-    public partial class EditUser : System.Web.UI.Page
+    public partial class EditUser : EDalan_WebForm.Helpers.BaseAdminPage
     {
         private FileUpload fileUploadService => new FileUpload();
         private string userId => Request.QueryString["userId"];
@@ -40,8 +40,22 @@ namespace EDalan_WebForm.Admin
             }
         }
 
-        protected void btnUpdate_Click(object sender, EventArgs e)
+       protected void btnUpdate_Click(object sender, EventArgs e)
         {
+            if (fileUploadProfileImage.HasFile && fileUploadProfileImage.PostedFile.ContentLength > (3 * 1024 * 1024))
+            {
+                string script = @"
+            <script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Upload Failed',
+                    text: 'Image size must be 3MB or less.',
+                    confirmButtonColor: '#3085d6'
+                });
+            </script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "FileSizeAlert", script);
+                return;
+            }
             using (var context = ApplicationDbContext.Create())
             {
                 var user = context.Users.FirstOrDefault(u => u.Id == userId);
@@ -62,8 +76,7 @@ namespace EDalan_WebForm.Admin
                     }
 
                     context.SaveChanges();
-                    Response.Redirect("~/Admin/Users.aspx", false);
-                    Context.ApplicationInstance.CompleteRequest();
+                    EDalan_WebForm.Helpers.AlertHelper.ShowSuccessAndRedirect(this, "Updated successfully.", "/Admin/Users.aspx");
                 }
             }
         }

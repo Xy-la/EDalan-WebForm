@@ -6,7 +6,7 @@ using EDalan.Services;
 
 namespace EDalan_WebForm.Admin
 {
-    public partial class Services : System.Web.UI.Page
+    public partial class Services : EDalan_WebForm.Helpers.BaseAdminPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -41,7 +41,8 @@ namespace EDalan_WebForm.Admin
                     {
                         context.Services.Remove(service);
                         context.SaveChanges();
-                        LoadServices(); 
+                        LoadServices();
+                        Helpers.AlertHelper.ShowSuccess(this.Page, "Deleted successfully!");
                     }
                 }
             }

@@ -6,7 +6,7 @@ using EDalan.Services;
 
 namespace EDalan_WebForm.Admin
 {
-    public partial class EditOfficial : System.Web.UI.Page
+    public partial class EditOfficial : EDalan_WebForm.Helpers.BaseAdminPage
     {
         private FileUpload fileUploadService => new FileUpload();
         private int OfficialId => Convert.ToInt32(Request.QueryString["officialId"]);
@@ -68,8 +68,7 @@ namespace EDalan_WebForm.Admin
                     }
 
                     context.SaveChanges();
-                    Response.Redirect("~/Admin/Officials.aspx", false);
-                    Context.ApplicationInstance.CompleteRequest();
+                    EDalan_WebForm.Helpers.AlertHelper.ShowSuccessAndRedirect(this, "Updated successfully.", "/Admin/Officials.aspx");
                 }
                 else
                 {

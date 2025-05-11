@@ -7,7 +7,7 @@ using EDalan.Services;
 
 namespace EDalan_WebForm.Admin
 {
-    public partial class Users : System.Web.UI.Page
+    public partial class Users : EDalan_WebForm.Helpers.BaseAdminPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -50,6 +50,7 @@ namespace EDalan_WebForm.Admin
                 {
                     context.Users.Remove(user);
                     context.SaveChanges();
+                    Helpers.AlertHelper.ShowSuccess(this.Page, "User deleted successfully!");
                 }
             }
         }

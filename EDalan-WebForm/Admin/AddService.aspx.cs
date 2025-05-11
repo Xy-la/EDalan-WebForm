@@ -9,7 +9,7 @@ using EDalan_WebForm.Models;
 
 namespace EDalan_WebForm.Admin
 {
-    public partial class AddService : System.Web.UI.Page
+    public partial class AddService : EDalan_WebForm.Helpers.BaseAdminPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -29,10 +29,9 @@ namespace EDalan_WebForm.Admin
 
                 context.Services.Add(newService);
                 context.SaveChanges();
-                Response.Redirect("~/Admin/Services.aspx", false);
-                Context.ApplicationInstance.CompleteRequest();
-            }
+                EDalan_WebForm.Helpers.AlertHelper.ShowSuccessAndRedirect(this, "Added successfully.", "/Admin/Services.aspx");
 
+            }
             txtTitle.Text = "";
             txtDescription.Text = "";
         }
