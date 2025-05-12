@@ -190,6 +190,7 @@
     <Content Include="Admin\Dashboard.aspx" />
     <Content Include="Admin\EditAnnouncement.aspx" />
     <Content Include="Admin\EditOfficial.aspx" />
+    <Content Include="Admin\EditRequest.aspx" />
     <Content Include="Admin\EditService.aspx" />
     <Content Include="Admin\EditUser.aspx" />
     <Content Include="Admin\Officials.aspx" />
@@ -352,6 +353,13 @@
     </Compile>
     <Compile Include="Admin\EditOfficial.aspx.designer.cs">
       <DependentUpon>EditOfficial.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\EditRequest.aspx.cs">
+      <DependentUpon>EditRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\EditRequest.aspx.designer.cs">
+      <DependentUpon>EditRequest.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\EditService.aspx.cs">
       <DependentUpon>EditService.aspx</DependentUpon>

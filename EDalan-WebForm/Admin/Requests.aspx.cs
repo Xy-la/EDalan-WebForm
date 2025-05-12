@@ -32,56 +32,21 @@ namespace EDalan_WebForm.Admin
 
         protected void gvRequests_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            string commandName = e.CommandName;
-            string commandArgument = e.CommandArgument.ToString(); 
-
-            using (var context = ApplicationDbContext.Create())
+            if (e.CommandName == "DeleteRequest")
             {
-                var request = context.Requests.FirstOrDefault(r => r.RequestId == commandArgument);
-                if (request != null)
+                int requestId = Convert.ToInt32(e.CommandArgument);
+                using (var context = ApplicationDbContext.Create())
                 {
-                    if (commandName == "Approve" || commandName == "Reject")
-                    {
-                        request.Status = commandName == "Approve" ? "Approved" : "Rejected";
-                        context.SaveChanges();
-
-                        ScriptManager.RegisterStartupScript(this, GetType(), "statusSuccess",
-                            $"Swal.fire('Success', 'Request has been {request.Status.ToLower()}!', 'success');", true);
-                    }
-                    else if (commandName == "Delete")
+                    var request = context.Requests.FirstOrDefault(r => r.Id == requestId);
+                    if (request != null)
                     {
                         context.Requests.Remove(request);
                         context.SaveChanges();
-
-                        Helpers.AlertHelper.ShowSuccess(this.Page, "Deleted successfully!");
-
+                        LoadRequests(); 
+                        Helpers.AlertHelper.ShowSuccess(this.Page, "Request deleted successfully!");
                     }
-
-                    LoadRequests();
-                }
-                else
-                {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "invalidId",
-                        "Swal.fire('Error', 'Request not found!', 'error');", true);
                 }
             }
-        }
-
-        protected override void Render(System.Web.UI.HtmlTextWriter writer)
-        {
-            foreach (GridViewRow row in gvRequests.Rows)
-            {
-                if (row.RowType == DataControlRowType.DataRow)
-                {
-                    string requestId = gvRequests.DataKeys[row.RowIndex].Value.ToString();
-
-                    ClientScript.RegisterForEventValidation(gvRequests.UniqueID, "Approve$" + requestId);
-                    ClientScript.RegisterForEventValidation(gvRequests.UniqueID, "Reject$" + requestId);
-                    ClientScript.RegisterForEventValidation(gvRequests.UniqueID, "Delete$" + requestId);
-                }
-            }
-
-            base.Render(writer);
         }
     }
 }

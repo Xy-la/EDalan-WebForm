@@ -38,5 +38,18 @@ Swal.fire({{
             ScriptManager.RegisterStartupScript(page, page.GetType(), "successAlert", script, true);
         }
 
+        public static void ShowError(Page page, string message)
+        {
+            string script = $@"
+Swal.fire({{
+    title: 'Error!',
+    text: '{message}',
+    icon: 'error',
+    confirmButtonText: 'OK'
+}});";
+
+            ScriptManager.RegisterStartupScript(page, page.GetType(), "errorAlert", script, true);
+        }
+
     }
 }
